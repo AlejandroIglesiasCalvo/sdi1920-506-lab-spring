@@ -29,4 +29,19 @@ public class Mark {
 		this.score = score;
 	}
 
+	public Mark(Long id, String description, Double score) {
+		super();
+		this.id = id;
+		this.description = description;
+		this.score = score;
+	}
+
+	public Mark() {
+	}
+
+	@Override
+	public String toString() {
+		return "Mark [id=" + id + ", description=" + description + ", score=" + score + "]";
+	}
+
 }
