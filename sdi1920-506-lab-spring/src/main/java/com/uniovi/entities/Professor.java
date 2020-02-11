@@ -1,10 +1,15 @@
 package com.uniovi.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 public class Professor {
 	private String nombre, apellidos, categoria;
+	@Id
+	@GeneratedValue
+	private Long id;
 	private int dni;
 	public Professor(String nombre, String apellidos, String categoria, int dni) {
 		super();
@@ -13,6 +18,7 @@ public class Professor {
 		this.categoria = categoria;
 		this.dni = dni;
 	}
+	public Professor() {};
 	public String getNombre() {
 		return nombre;
 	}
