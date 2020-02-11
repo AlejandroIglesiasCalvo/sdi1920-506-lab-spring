@@ -9,8 +9,8 @@ public class Professor {
 	private String nombre, apellidos, categoria;
 	@Id
 	@GeneratedValue
-	private int dni;
-	public Professor(String nombre, String apellidos, String categoria, int dni) {
+	private Long dni;
+	public Professor(String nombre, String apellidos, String categoria, long dni) {
 		super();
 		this.nombre = nombre;
 		this.apellidos = apellidos;
@@ -36,11 +36,13 @@ public class Professor {
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
-	public int getDni() {
+	public Long getDni() {
 		return dni;
 	}
-	public void setDni(int dni) {
-		this.dni = dni;
+	public void setDni(Long dni2) {
+		// TODO Auto-generated method stub
+		this.dni=dni2;
 	}
+
 
 }
