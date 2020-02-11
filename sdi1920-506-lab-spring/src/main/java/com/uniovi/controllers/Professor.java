@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class Professor {
 
 	@RequestMapping("/professor/add")
-	public String setMark() {
+	public String setProfessor() {
 		return "Adding Professor";
 	}
 
 	@RequestMapping(value = "/professor/add", method = RequestMethod.POST)
-	public String setMark(@RequestParam String nombre, @RequestParam String apellidos, @RequestParam String categoria,
+	public String setProfessor(@RequestParam String nombre, @RequestParam String apellidos, @RequestParam String categoria,
 			@RequestParam int dni) {
 		//marksService.addMark(mark);
 		return "añadido: "+nombre+apellidos+dni+categoria;
@@ -34,7 +34,7 @@ public class Professor {
 	}
 
 	@RequestMapping("/professor/delete/{id}")
-	public String deleteMark(@PathVariable long id) {
+	public String deleteProfessor(@PathVariable long id) {
 		//marksService.deleteMark(id);
 		return "ok";
 	}
