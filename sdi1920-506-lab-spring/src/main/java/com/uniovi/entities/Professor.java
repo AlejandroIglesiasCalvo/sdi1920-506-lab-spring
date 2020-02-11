@@ -9,7 +9,6 @@ public class Professor {
 	private String nombre, apellidos, categoria;
 	@Id
 	@GeneratedValue
-	private Long id;
 	private int dni;
 	public Professor(String nombre, String apellidos, String categoria, int dni) {
 		super();
