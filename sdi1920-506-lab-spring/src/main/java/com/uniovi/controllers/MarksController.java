@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.uniovi.entities.Mark;
 import com.uniovi.services.MarksService;
 import com.uniovi.services.UsersService;
+import com.uniovi.validators.MarksFormValidator;
 
 @Controller
 public class MarksController {
@@ -19,7 +20,8 @@ public class MarksController {
 	private MarksService marksService;
 	@Autowired
 	private UsersService usersService;
-
+	@Autowired
+	private MarksFormValidator MarksValidator;
 	@RequestMapping("/mark/list")
 	public String getList(Model model) {
 		model.addAttribute("markList", marksService.getMarks());
@@ -28,6 +30,10 @@ public class MarksController {
 
 	@RequestMapping(value = "/mark/add", method = RequestMethod.POST)
 	public String setMark(@ModelAttribute Mark mark) {
+		boolean resultado=MarksValidator.validate(mark);
+		if(resultado) {
+			return "Okki";
+		}
 		marksService.addMark(mark);
 		return "redirect:/mark/list";
 	}
