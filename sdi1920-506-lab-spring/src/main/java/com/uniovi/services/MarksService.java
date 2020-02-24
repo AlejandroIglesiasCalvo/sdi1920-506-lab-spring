@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.uniovi.entities.Mark;
 import com.uniovi.entities.User;
@@ -68,4 +69,17 @@ public class MarksService {
 		}
 		return marks;
 	}
+
+	public List<Mark> searchMarksByDescriptionAndNameForUser(String searchText, User user) {
+		List<Mark> marks = new ArrayList<Mark>();
+		searchText = "%"+searchText+"%";
+		if (user.getRole().equals("ROLE_STUDENT")) {
+			marks = marksRepository.searchByDescriptionNameAndUser(searchText, user);
+		}
+		if (user.getRole().equals("ROLE_PROFESSOR")) {
+			marks = marksRepository.searchByDescriptionAndName(searchText);
+		}
+		return marks;
+	}
+
 }
