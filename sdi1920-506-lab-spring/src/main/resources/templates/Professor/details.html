@@ -43,7 +43,7 @@
 
 
 	<div class="container">
-		<h2>Detalles de la nota</h2>
+		<h2>Detalles dela nota</h2>
 		<div class="panel panel-default">
 			<div class="panel-heading">Descripción</div>
 			<div class="panel-body" th:text="${mark.description}">Ejercicio
@@ -51,19 +51,22 @@
 		</div>
 		<div class="panel panel-default">
 			<div class="panel-heading">Puntuación</div>
-			<div class="panel-body" th:text="${mark.score}>100</div>
+			<div class="panel-body"
+				th:text="${mark.score}>100</div>
 		</div>
-	</div><div class="container">
-		<h2>Detalles del profesor</h2>
-		<div class="panel panel-default">
-			<div class="panel-heading">Nombre</div>
-			<div class="panel-body" th:text="${professor.nombre}">Nombre</div>
-		</div>
-		<div class="panel panel-default">
-			<div class="panel-heading">DNI</div>
-			<div class="panel-body" th:text="${professor.dni}>DNI</div>
-		</div>
-	</div>
-
+	</div><div class="
+				container"  sec:authorize="isAuthenticated()">
+				<h2>Detalles del profesor</h2>
+				<div class="panel panel-default"
+					sec:authorize="hasAnyRole('ROLE_ADMIN''ROLE_ADMIN','ROLE_PROFESSOR')">
+					<div class="panel-heading">Nombre</div>
+					<div class="panel-body" th:text="${professor.nombre}">Nombre</div>
+				</div>
+				<div class="panel panel-default"
+					sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_PROFESSOR')">
+					<div class="panel-heading">DNI</div>
+					<div class="panel-body" th:text="${professor.dni}>DNI</div>
+				</div>
+			</div>
 </body>
 </html>

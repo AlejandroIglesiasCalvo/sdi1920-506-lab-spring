@@ -66,9 +66,9 @@
 	</div>
 	
 	
-	<div class="container">
+	<div class="container" sec:authorize="isAuthenticated()>
 		<h2>Agregar profesor</h2>
-		<form class="form-horizontal" method="post" action="/professor/add">
+		<form class="form-horizontal" method="post" action="/professor/add" sec:authorize="hasRole('ROLE_ADMIN')">
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="nombre">Nombre:</label>
 				<div class="col-sm-10">
