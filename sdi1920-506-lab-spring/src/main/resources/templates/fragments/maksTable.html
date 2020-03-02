@@ -1,0 +1,31 @@
+<div class="table-responsive"
+	sec:authorize="isAuthenticated()>
+		 	<table class="tabletable-hover">
+	<thead>
+		<tr>
+			<th class="col-md-1">id</th>
+			<th>Descripcion</th>
+			<th>Puntuacion</th>
+			<th class="col-md-1"></th>
+			<th class="col-md-1"></th>
+			<th class="col-md-1"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="mark : ${markList}">
+			<td th:text="${mark.id}">1</td>
+			<td th:text="${mark.description}" th:text="#{descripcion.message}">Ejercicio
+				1</td>
+			<td th:text="${mark.score}">10</td>
+			<td><a th:href="${'/mark/details/' + mark.id}"
+				th:text="#{detalles.message}">detalles</a></td>
+			<td><a th:href="${'/mark/edit/' + mark.id}"
+				sec:authorize="hasRole('ROLE_PROFESSOR')"
+				th:text="#{modificar.message}">modificar</a></td>
+			<td><a th:href="${'/mark/delete/' + mark.id}"
+				sec:authorize="hasRole('ROLE_PROFESSOR')"
+				th:text="#{eliminar.message}">eliminar</a></td>
+		</tr>
+	</tbody>
+	</table>
+</div>

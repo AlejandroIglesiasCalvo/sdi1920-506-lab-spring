@@ -45,4 +45,11 @@ public class UsersService {
 	public User getUserByDni(String dni) {
 		return usersRepository.findByDni(dni);
 	}
+
+	public List<User> searchUserByName(String searchText, User user) {
+		List<User> users = new ArrayList<User>();
+		searchText = "%" + searchText + "%";
+		users = usersRepository.searchByDescriptionAndName(searchText);
+		return users;
+	}
 }
