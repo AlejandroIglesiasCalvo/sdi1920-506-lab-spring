@@ -41,7 +41,7 @@ public class NotaneitorTests {
 		driver.manage().deleteAllCookies();
 	}
 
-	// Antes de la primera prueba
+	// Antes de la primera prueba 
 	@BeforeClass
 	static public void begin() {
 	}
