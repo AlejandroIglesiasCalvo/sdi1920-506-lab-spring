@@ -147,7 +147,7 @@ public class NotaneitorTests {
 	@Test
 	public void PR12() {
 		PO_PrivateView.llegarVistaPrivada(driver, "99999990A", "123456","Notas del usuario");
-		 
+
 		// Contamos el número de filas de notas
 		List<WebElement> elementos = SeleniumUtils.EsperaCargaPagina(driver, "free", "//tbody/tr",
 				PO_View.getTimeout());
@@ -176,7 +176,7 @@ public class NotaneitorTests {
 
 	public void PR14() {
 		PO_PrivateView.llegarVistaPrivada(driver,"99999993D", "123456","99999993D");;
-		
+
 		// Pinchamos en la opción de menu de Notas: //li[contains(@id, 'marks-menu')]/a
 		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li[contains(@id,'marks-menu')]/a");
 		elementos.get(0).click();
@@ -217,14 +217,17 @@ public class NotaneitorTests {
 		//Esperamos a que aparezca la Nueva nota en la ultima pagina
 		//Y Pinchamos en el enlace de borrado de la Nota "Nota Nueva 1"
 		//td[contains(text(), 'Nota Nueva 1')]/following-sibling::*/a[contains(text(),'mark/delete')]"
-			elementos = PO_View.checkElement(driver, "free", "//td[contains(text(), 'NotaNueva 1')]/following-sibling::*/a[contains(@href, 'mark/delete')]");
-					elementos.get(0).click();
-			//Volvemos a la última pagina
-			elementos = PO_View.checkElement(driver, "free", "//a[contains(@class, 'pagelink')]");
-			elementos.get(3).click();
-			//Y esperamos a que NO aparezca la ultima "Nueva Nota 1"
-			SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "Nota Nueva1",PO_View.getTimeout() );
-					//Ahora nos desconectamos
-					PO_PrivateView.clickOption(driver, "logout", "text", "Identifícate");
+		elementos = PO_View.checkElement(driver, "free", "//td[contains(text(), 'NotaNueva 1')]/following-sibling::*/a[contains(@href, 'mark/delete')]");
+		elementos.get(0).click();
+		//Volvemos a la última pagina
+		elementos = PO_View.checkElement(driver, "free", "//a[contains(@class, 'pagelink')]");
+		elementos.get(3).click();
+		//Y esperamos a que NO aparezca la ultima "Nueva Nota 1"
+		SeleniumUtils.EsperaCargaPaginaNoTexto(driver, "Nota Nueva1",PO_View.getTimeout() );
+		//Ahora nos desconectamos
+		PO_PrivateView.clickOption(driver, "logout", "text", "Identifícate");
 	}
+
+	
+	
 }
